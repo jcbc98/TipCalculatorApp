@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Tip Calculator App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script src="tipcalculator.js"></script>
+  </head>
+  <body>
+
+    <div id="calc" class="calculator">
+      <div style="float: right;">
+        <button id="editBtn" onclick="editSettings(); return false;">Edit Settings</button>
+      </div>
+      <h1>Tip Calculator</h1>
+      <form>
+        $&nbsp;<input id="subtotal" name="subtotal" type="text" size="10" placeholder="Subtotal (No Tax)"/>
+        <select id="choice"></select>
+        <button onclick="calc(); return false;">GO</button>
+      </form>
+      <div style="float: left;">
+        <p id="result"></p>
+      </div>
+    </div>
+    <div id="edit" class="settings">
+      <h2>Edit Settings</h2>
+      <form>
+        <fieldset><legend>Save to use settings:</legend>
+          <div>
+            <button onclick="saveSettings(); return false;">SAVE SETTINGS</button>
+          </div>
+        </fieldset>
+        <fieldset id="levels">
+        </fieldset>
+        <fieldset><legend>How to round tip amount:</legend>
+          <div><input type="radio" name="rounding" id="noround" value="NONE" />
+            <label for="noround">No rounding</label>
+          </div>
+          <div><input type="radio" name="rounding" id="upround" value="UP" />
+            <label for="upround">Always round UP to whole dollar, e.g. $1.30 becomes $2</label>
+          </div>
+          <div><input type="radio" name="rounding" id="nlround" value="NORMAL" />
+            <label for="nlround">Round up or down to NEAREST whole dollar, e.g. $1.30 becomes $1</label>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </body>
+
+</html>
+
