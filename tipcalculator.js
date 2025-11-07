@@ -56,9 +56,9 @@ function fillLevelsSettings() {
 
 function createLevelInputs(level, label, tip) {
   const levelID = "level" + level;
-  var inputsStr = "<input type='text' id='" + levelID + "' size='5' name='" + levelID + "' ";
-  inputsStr += "value='" + label + "' /> &nbsp; <input type='number' id='" + levelID + "_tip' "; 
-  inputsStr += "min='0' max='100' value='" + tip + "' />%";
+  var inputsStr = "<div class='left-input'><input type='text' size='15' id='" + levelID + "' name='" + levelID + "' ";
+  inputsStr += "value='" + label + "' /></div><div class='right-input'><input type='number' id='" + levelID + "_tip' "; 
+  inputsStr += "min='0' max='100' value='" + tip + "' /><label class='heavy-emphasis'>%</label></div>";
   const d = document.createElement('div');
   d.innerHTML = inputsStr;
   return d;
@@ -119,7 +119,7 @@ function calc() {
   else if (rounding != "NONE") {
     tr = Math.round(tr);
   }
-  document.getElementById("result").innerHTML = "$ " + tr.toFixed(2);
+  document.getElementById("result").innerHTML = "$&nbsp;" + tr.toFixed(2);
 }
 
 /**
