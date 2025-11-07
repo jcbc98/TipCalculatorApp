@@ -11,26 +11,24 @@
 
     <div id="calc" class="calculator">
       <div style="float: right;">
-        <button id="editBtn" onclick="editSettings(); return false;">Edit Settings</button>
+        <button class="button-3" role="button" id="editBtn" onclick="editSettings(); return false;">Edit Settings</button>
       </div>
       <h1>Tip Calculator</h1>
-      <form>
-        $&nbsp;<input id="subtotal" name="subtotal" type="text" size="10" placeholder="Subtotal (No Tax)"/>
-        <select id="choice"></select>
-        <button onclick="calc(); return false;">GO</button>
+      <form class="inputs">
+        <label for="subtotal" class="heavy-emphasis">$&nbsp;</label>
+        <input id="subtotal" name="subtotal" type="text" placeholder="Subtotal (No Tax)"/>
+        <select class="box" id="choice"></select>
+        <button class="button-3" role="button" onclick="calc(); return false;">GO</button>
       </form>
-      <div style="float: left;">
-        <p id="result"></p>
+      <div class="top-padding">
+        <label id="result" class="heavy-emphasis"></label>
       </div>
     </div>
     <div id="edit" class="settings">
       <h2>Edit Settings</h2>
-      <form>
-        <fieldset><legend>Save to use settings:</legend>
-          <div>
-            <button onclick="saveSettings(); return false;">SAVE SETTINGS</button>
-          </div>
-        </fieldset>
+      <div>
+        <button class="button-3" role="button" onclick="saveSettings(); return false;">SAVE AND CLOSE SETTINGS</button>
+      </div>
         <fieldset id="levels">
         </fieldset>
         <fieldset><legend>How to round tip amount:</legend>
@@ -44,7 +42,6 @@
             <label for="nlround">Round up or down to NEAREST whole dollar, e.g. $1.30 becomes $1</label>
           </div>
         </fieldset>
-      </form>
     </div>
   </body>
 

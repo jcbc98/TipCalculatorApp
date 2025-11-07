@@ -4,7 +4,7 @@
 
 .settings {
   clear: both;
-  margin: 40px;
+  margin: 5px 40px 40px 40px;
   padding-top: 5px;
   padding-bottom: 20px;
   padding-left: 20px;
@@ -13,9 +13,18 @@
   display: none;
 }
 
-#result {
+.inputs {
+  display: flex;
+  align-items: center;
+}
+
+.heavy-emphasis {
  font-size: 18pt;
  font-weight: bold;
+}
+
+#subtotal {
+  width: 8em;
 }
 
 body { 
@@ -23,7 +32,11 @@ body {
 }
 
 div {
-  padding-bottom: 5px;
+  padding-bottom: 10px;
+}
+
+.top-padding {
+  padding-top: 15px;
 }
 
 fieldset { 
@@ -37,5 +50,109 @@ input {
 }
 
 label { 
-  padding-left: 10px; 
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.left-input {
+  clear: both; 
+  float: left;
+  padding-right: 10px;
+}
+
+.right-input {
+  padding-left: 10px;
+}
+
+/* https://getcssscan.com/css-buttons-examples
+<!-- HTML !-->
+<button class="button-3" role="button">Button 3</button>
+*/
+
+/* CSS */
+.button-3 {
+  appearance: none;
+  background-color: #2ea44f;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 3px 8px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  margin-left: 8px;
+}
+
+.button-3:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.button-3:hover {
+  background-color: #2c974b;
+}
+
+.button-3:focus {
+  box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+  outline: none;
+}
+
+.button-3:disabled {
+  background-color: #94d3a2;
+  border-color: rgba(27, 31, 35, .1);
+  color: rgba(255, 255, 255, .8);
+  cursor: default;
+}
+
+.button-3:active {
+  background-color: #298e46;
+  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
+
+/* https://www.w3docs.com/snippets/css/how-to-style-a-select-box-drop-down-with-only-css.html
+*/
+
+.box {
+  /*width: 120px;*/
+  height: 28px;
+  border: 1px solid #999;
+  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  color: #2ea44f;
+  background-color: #eee;
+  border-radius: 6px;
+  box-shadow: 4px 4px #ccc;
+  padding: 3px 8px;
+  margin-left: 8px;
+}
+
+/* Screen size adjustments
+*/
+
+@media screen and (max-width: 500px) {
+  .box {
+    width: 120px;
+  }
+  .right-input {
+    padding-left: 0px;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .left-input {
+    padding-top: 3px;
+  }
 }
