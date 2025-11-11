@@ -52,25 +52,57 @@ function fillLevelsSettings() {
     const d = createLevelInputs(idx, level[0], level[1]);
     levelsElt.appendChild(d); 
   });
+  const n = createLevelInputs('_new', '', '');
+  levelsElt.appendChild(n);
 }
 
 function createLevelInputs(level, label, tip) {
   const levelID = "level" + level;
   var inputsStr = "<div class='left-input'><input type='text' size='15' id='" + levelID + "' name='" + levelID + "' ";
   inputsStr += "value='" + label + "' /></div><div class='right-input'><input type='number' id='" + levelID + "_tip' "; 
-  inputsStr += "min='0' max='100' value='" + tip + "' /><label class='heavy-emphasis'>%</label></div>";
+  inputsStr += "min='0' max='100' value='" + tip + "' /><label class='heavy-emphasis'>%</label>";
+  if (!isNaN(level)) {
+    inputsStr += "&nbsp;&nbsp;<button class='button-48' onclick='deleteLevel("+level+"); return false;'>";
+    inputsStr += "<span class='text'>&#x274C</span></button>";
+  }
+  inputsStr += "</div>";
   const d = document.createElement('div');
   d.innerHTML = inputsStr;
+  d.setAttribute('id', "div_" + levelID);
   return d;
 }
 
+function deleteLevel(level) {
+  const levelID = "level" + level;
+  const levelDiv = document.getElementById("div_" + levelID);
+  levelDiv.style.display = 'none';
+}
+
 function saveLevelsSettings() {
+  levels_to_delete = [];
   levels.forEach((level, idx) => {
     const levelID = "level" + idx;
-    const levelElt_label = document.getElementById(levelID).value;
-    const levelElt_tip = Number(document.getElementById(levelID + "_tip").value);
-    levels[idx][0] = levelElt_label;
-    levels[idx][1] = levelElt_tip;
+    const levelDiv = document.getElementById("div_" + levelID);
+    if (levelDiv.style.display == 'none') {
+      levels_to_delete.push(idx);
+    }
+    else {
+      const levelElt_label = trimAndSqueezeWhitespace(document.getElementById(levelID).value);
+      const levelElt_tip   = Number(document.getElementById(levelID + "_tip").value);
+      levels[idx][0]       = levelElt_label;
+      levels[idx][1]       = levelElt_tip;
+    }
+  });
+  levels_to_delete.forEach((level, idx) => {
+    levels.splice(level, 1);
+  });
+  const newlevel_label = trimAndSqueezeWhitespace(document.getElementById("level_new").value);
+  const newlevel_tip = Number(document.getElementById("level_new_tip").value);
+  if (newlevel_label.length > 0 && !isNaN(newlevel_tip)) {
+    levels.push([ newlevel_label, newlevel_tip ]);
+  }
+  levels.sort((a, b) => {
+    return a[1] - b[1]; // Sort on tip percentage
   });
 }
 
@@ -120,6 +152,14 @@ function calc() {
     tr = Math.round(tr);
   }
   document.getElementById("result").innerHTML = "$&nbsp;" + tr.toFixed(2);
+}
+
+/**
+*   Utility / Helper functions
+**/
+
+function trimAndSqueezeWhitespace(s) {
+  return s.trim().replace(/\s+/g, ' ');
 }
 
 /**
