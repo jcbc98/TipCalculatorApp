@@ -148,10 +148,13 @@ function calc() {
   if (rounding == "UP") {
     tr = Math.round(tr + 0.499);
   }
-  else if (rounding != "NONE") {
+  else if (rounding == "NORMAL") {
     tr = Math.round(tr);
   }
-  document.getElementById("result").innerHTML = "$&nbsp;" + tr.toFixed(2);
+  else {
+    tr = tr.toFixed(2);
+  }
+  document.getElementById("result").innerHTML = "$&nbsp;" + tr;
 }
 
 /**
