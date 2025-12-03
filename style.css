@@ -27,6 +27,11 @@
   width: 8em;
 }
 
+#result {
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
 body { 
   background: #85bb65; 
 }
@@ -223,4 +228,20 @@ label {
   .left-input {
     padding-top: 3px;
   }
+}
+
+/* PWA additions
+*/
+
+.add-button {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  display: none;
+}
+
+#installHelpBtn {
+  margin-left: 10px;
+  font-size: 18px;
+  font-weight: bold;
 }

@@ -168,8 +168,55 @@ function trimAndSqueezeWhitespace(s) {
 /**
 *   Set up page on first load 
 **/
+
+let deferredPrompt;
+let addBtn;
+
 window.addEventListener("load", (event) => {
+  // Code to handle PWA install prompt on desktop
+  window.addEventListener('beforeinstallprompt', (e) => {
+    window.addBtn = document.querySelector('.add-button');
+    // Prevent Chrome 67 and earlier from automatically showing the prompt
+    e.preventDefault();
+    // Stash the event so it can be triggered later.
+    window.deferredPrompt = e;
+    // Update UI to notify the user they can add to home screen
+    window.addBtn.style.display = 'block';
+
+    window.addBtn.addEventListener('click', () => {
+      // hide our user interface that shows "Add to home screen" button
+      window.addBtn.style.display = 'none';
+      // Show the prompt
+      window.deferredPrompt.prompt();
+      // Wait for the user to respond to the prompt
+      window.deferredPrompt.userChoice.then((choiceResult) => {
+        window.addBtn.style.display = 'none';
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the PWA prompt');
+          document.getElementById('installHelpBtn').style.display = 'none';
+        } else {
+          console.log('User dismissed the PWA prompt');
+        }
+        window.deferredPrompt = null;
+      });
+    });
+  });
+  // Set up page
   loadSettings();
   setupLevelChoices();
   setupRoundingChoices();
+  // Hide PWA install button when in app mode
+  if (window.matchMedia('(display-mode: standalone)').matches) {
+    document.getElementById("installHelpBtn").style.display = 'none';
+  }
 });
+
+/**
+*   PWA Code
+**/
+
+// Register service worker to control making site work offline
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}

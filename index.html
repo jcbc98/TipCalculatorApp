@@ -4,14 +4,22 @@
     <meta charset="UTF-8">
     <title>Tip Calculator App</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" type="image/png" sizes="32x32" href="tip-icon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="tip-icon-180x180.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-status-bar-style" content="default">
+    <link rel="icon" type="image/png" sizes="192x192" href="tip-icon-192x192.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#85bb65">
     <link rel="stylesheet" href="style.css">
     <script src="tipcalculator.js"></script>
   </head>
   <body>
-
     <div id="calc" class="calculator">
+      <button class="add-button">Add to home screen</button>
       <div style="float: right;">
         <button class="button-3" role="button" id="editBtn" onclick="editSettings(); return false;">Edit Settings</button>
+        <button role="button" id="installHelpBtn" onclick="document.getElementById('installation').style.display = 'block';">↧</button>
       </div>
       <h1>Tip Calculator</h1>
       <form class="inputs">
@@ -29,21 +37,37 @@
       <div>
         <button class="button-3" role="button" onclick="saveSettings(); return false;">SAVE AND CLOSE SETTINGS</button>
       </div>
-        <fieldset id="levels">
-        </fieldset>
-        <fieldset><legend>How to round tip amount:</legend>
-          <div><input type="radio" name="rounding" id="noround" value="NONE" />
-            <label for="noround">No rounding</label>
-          </div>
-          <div><input type="radio" name="rounding" id="upround" value="UP" />
-            <label for="upround">Always round UP to whole dollar, e.g. $1.30 becomes $2</label>
-          </div>
-          <div><input type="radio" name="rounding" id="nlround" value="NORMAL" />
-            <label for="nlround">Round up or down to NEAREST whole dollar, e.g. $1.30 becomes $1</label>
-          </div>
-        </fieldset>
+      <fieldset id="levels">
+      </fieldset>
+      <fieldset><legend>How to round tip amount:</legend>
+        <div><input type="radio" name="rounding" id="noround" value="NONE" />
+          <label for="noround">No rounding</label>
+        </div>
+        <div><input type="radio" name="rounding" id="upround" value="UP" />
+          <label for="upround">Always round UP to whole dollar, e.g. $1.30 becomes $2</label>
+        </div>
+        <div><input type="radio" name="rounding" id="nlround" value="NORMAL" />
+          <label for="nlround">Round up or down to NEAREST whole dollar, e.g. $1.30 becomes $1</label>
+        </div>
+      </fieldset>
+    </div>
+    <div id="installation" class="settings">
+      <div style="float: right;">
+        &nbsp;<br>
+        <button class="button-3" role="button" onclick="document.getElementById('installation').style.display = 'none';">
+          CLOSE
+        </button>
+      </div>
+      <h2>How to install this webpage as an app</h2>
+      <div>
+        <div> This webpage is available as a "Progressive Web App" (PWA). How to install a local copy of it
+          on your device depends on what kind of device and which web browser you are using. See the
+          following link for more details (this will take you to a different, unaffiliated website):
+          <a href="https://www.projectlify.com/install-pwa" target="_blank">Projectlify's "How to Install a PWA"
+            (external link)</a>
+        </div>
+      </div>
     </div>
   </body>
-
 </html>
 

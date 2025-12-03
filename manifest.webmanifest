@@ -1,0 +1,30 @@
+{
+  "background_color": "#85bb65",
+  "description": "A simple customizable web app for calculating amount to tip based on a subtotal",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "tip-icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "tip-icon-180x180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "tip-icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "tip-icon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ],
+  "name": "Tip Calculator App",
+  "short_name": "TipCalcApp",
+  "start_url": "index.html"
+}
